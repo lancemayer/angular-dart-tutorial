@@ -20,10 +20,10 @@ void main() {
     expect(fixture.text, 'Hello Angular');
   });
 
-  test('Greet world', () async {
-    await fixture.update((c) => c.heroes[0].name = 'Mr. Nice');
-    expect(fixture.text, 'Hello World');
-  });
+  // test('Greet world', () async {
+  //   await fixture.update((c) => c.heroes[0].name = 'Mr. Nice');
+  //   expect(fixture.text, 'Hello World');
+  // });
 
   test('Greet world HTML', () {
     final html = fixture.rootElement.innerHtml;
