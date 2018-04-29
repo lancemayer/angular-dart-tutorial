@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
+import 'dart:async';
 import 'src/hero.dart';
 import 'src/mock_heroes.dart';
 import 'src/hero_component.dart';
@@ -24,7 +25,7 @@ class AppComponent implements OnInit {
 
   void onSelect(Hero hero) => selected = hero;
 
-  void _getHeroes() {
-    heroes = _heroService.getAll();
+  Future<void> _getHeroes() async {
+    heroes = await _heroService.getAll();
   }
 }
