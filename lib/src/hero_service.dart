@@ -5,6 +5,9 @@ import 'mock_heroes.dart';
 
 @Injectable()
 class HeroService {
+  Future<Hero> get(int id) async =>
+    (await getAll()).firstWhere((hero) => hero.id == id);
+  
   Future<List<Hero>> getAll() async => mockHeroes;
 
   Future<List<Hero>> getAllSlowly() {
