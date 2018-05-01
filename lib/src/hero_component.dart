@@ -11,6 +11,7 @@ import 'route_paths.dart' as paths;
 @Component (
   selector: 'my-hero',
   templateUrl: 'hero_component.html',
+  styleUrls: ['hero_component.css'],
   directives: [coreDirectives, formDirectives]
 )
 class HeroComponent implements OnActivate {
