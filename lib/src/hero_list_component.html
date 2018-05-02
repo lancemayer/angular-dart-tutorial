@@ -1,4 +1,10 @@
 <h2>Heroes</h2>
+<div>
+    <label>Hero Name:</label> <input #heroName />
+    <button (click)="add(heroName.value); heroName.value=''">
+        Add
+    </button>
+</div>
 <ul class="heroes">
     <li *ngFor="let hero of heroes"
         (click)="onSelect(hero)"

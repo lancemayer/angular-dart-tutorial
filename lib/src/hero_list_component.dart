@@ -32,6 +32,14 @@ class HeroListComponent implements OnInit {
     heroes = await _heroService.getAll();
   }
 
+  Future<void> add(String name) async {
+    name = name.trim();
+    if (name.isEmpty)
+      return null;
+    heroes.add(await _heroService.create(name));
+    selected = null;
+  }
+
   String _heroUrl(int id) =>
     paths.hero.toUrl(parameters: {paths.idParam: id.toString()});
 

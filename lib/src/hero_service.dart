@@ -9,16 +9,21 @@ import 'hero.dart';
 
 @Injectable()
 class HeroService {
-  Future<Hero> get(int id) async =>
-    (await getAll()).firstWhere((hero) => hero.id == id);
-
   static const _heroesUrl = 'api/heroes';
 
   final Client _http;
-
+  static final _headers = {'Content-Type': 'application/json'};
   HeroService(this._http);
   
-  // Future<List<Hero>> getAll() async => mockHeroes;
+  Future<Hero> get(int id) async {
+    try {
+      final response = await _http.get('$_heroesUrl/$id');
+      return new Hero.fromJson(_extractData(response));
+    } catch (e) {
+      throw _handleError(e);
+    }
+  }
+
   Future<List<Hero>> getAll() async {
     try{
       final response = await _http.get(_heroesUrl);
@@ -32,6 +37,25 @@ class HeroService {
     }
   }
 
+  Future<Hero> create(String name) async {
+    try {
+      final response = await _http.post(_heroesUrl, headers: _headers, body: json.encode({'name': name}));
+      return new Hero.fromJson(_extractData(response));
+    } catch (e) {
+      throw _handleError(e);
+    }
+  }
+
+  Future<Hero> update(Hero hero) async {
+    try {
+      final url = '$_heroesUrl/${hero.id}';
+      final response = await _http.put(url, headers: _headers, body: json.encode(hero));
+      return new Hero.fromJson(_extractData(response));
+    } catch (e) {
+      throw _handleError(e);
+    }
+  }
+
   dynamic _extractData(Response resp) => json.decode(resp.body)['data'];
 
   Exception _handleError(dynamic e) {
@@ -39,9 +63,3 @@ class HeroService {
     return new Exception('Server error; cause: $e');
   }
 }
-
-
-  // Future<List<Hero>> getAllSlowly() {
-  //   return new Future.delayed(const Duration(seconds: 2), getAll);
-  // }
-// }
