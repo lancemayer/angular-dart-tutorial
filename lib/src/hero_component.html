@@ -5,8 +5,12 @@
     </div>
     <div>
         <label>name: </label>
-        <input [(ngModel)]="hero.name" placeholder="name">
+        <material-input [(ngModel)]="hero.name" placeholder="name"></material-input>
     </div>
-    <button (click)="save()">Save</button>
-    <button (click)="goBack()">Back</button>
+    <material-button raised (trigger)="goBack()">
+        <material-icon icon="arrow_back"></material-icon>
+    </material-button>
+    <material-button raised (trigger)="save()">
+        <material-icon icon="save"></material-icon>
+    </material-button>
 </div>

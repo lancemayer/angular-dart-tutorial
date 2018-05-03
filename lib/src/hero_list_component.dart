@@ -1,6 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:angular_components/angular_components.dart';
 
 import 'dart:async';
 import 'hero.dart';
@@ -11,8 +12,16 @@ import 'route_paths.dart' as paths;
   selector: 'my-heroes',
   templateUrl: 'hero_list_component.html',
   styleUrls: ['hero_list_component.css'],
-  directives: [coreDirectives, formDirectives],
-  providers: [const ClassProvider(HeroService)],
+  directives: [
+    materialDirectives,
+    materialInputDirectives,
+    coreDirectives,
+    formDirectives,
+  ],
+  providers: [
+    const ClassProvider(HeroService),
+    materialProviders,
+  ],
   pipes: [commonPipes],
 )
 class HeroListComponent implements OnInit {
@@ -21,6 +30,7 @@ class HeroListComponent implements OnInit {
   final title = 'Tour de Heroes';
   List<Hero> heroes;
   Hero selected;
+  String addHeroName;
 
   HeroListComponent(this._heroService, this._router);
 
@@ -32,17 +42,17 @@ class HeroListComponent implements OnInit {
     heroes = await _heroService.getAll();
   }
 
-  Future<void> add(String name) async {
-    name = name.trim();
-    if (name.isEmpty)
-      return null;
+  Future<void> add() async {
+    String name = addHeroName.trim();
+    if (name.isEmpty) return null;
     heroes.add(await _heroService.create(name));
     selected = null;
+    addHeroName = '';
   }
 
   String _heroUrl(int id) =>
-    paths.hero.toUrl(parameters: {paths.idParam: id.toString()});
+      paths.hero.toUrl(parameters: {paths.idParam: id.toString()});
 
-  Future<NavigationResult> gotoDetail() => 
-    _router.navigate(_heroUrl(selected.id));
+  Future<NavigationResult> gotoDetail() =>
+      _router.navigate(_heroUrl(selected.id));
 }

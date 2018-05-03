@@ -3,16 +3,23 @@ import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:angular_components/angular_components.dart';
 
 import 'hero.dart';
 import 'hero_service.dart';
 import 'route_paths.dart' as paths;
 
-@Component (
+@Component(
   selector: 'my-hero',
   templateUrl: 'hero_component.html',
   styleUrls: ['hero_component.css'],
-  directives: [coreDirectives, formDirectives]
+  directives: [
+    coreDirectives,
+    formDirectives,
+    materialDirectives,
+    materialInputDirectives,
+  ],
+  providers: const [materialProviders],
 )
 class HeroComponent implements OnActivate {
   final HeroService _heroService;
@@ -25,8 +32,7 @@ class HeroComponent implements OnActivate {
   @override
   Future<void> onActivate(_, RouterState current) async {
     final id = paths.getId(current.parameters);
-    if (id != null)
-      hero = await (_heroService.get(id));
+    if (id != null) hero = await (_heroService.get(id));
   }
 
   Future<void> save() async {

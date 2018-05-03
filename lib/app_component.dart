@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:angular_components/angular_components.dart';
 
 import 'src/hero_service.dart';
 import 'src/routes.dart';
@@ -17,10 +18,14 @@ import 'src/routes.dart';
     <router-outlet [routes]="routes.all"></router-outlet>
   ''',
   styleUrls: ['app_component.css'],
-  directives: [routerDirectives],
+  directives: [
+    routerDirectives,
+    materialDirectives,
+  ],
   providers: [
     const ClassProvider(HeroService),
     const ClassProvider(Routes),
+    materialProviders,
   ],
 )
 class AppComponent {
