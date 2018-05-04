@@ -3,57 +3,56 @@
   color: white;
 }
 .heroes {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
+  margin: 0;
   width: 15em;
 }
 .heroes material-list-item {
   cursor: pointer;
-  position: relative;
-  left: 0;
   background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
+  margin: 0;
+  padding: 0;
 }
 .heroes material-list-item.selected:hover {
   color: white;
 }
 .heroes material-list-item:hover {
   color: #607D8B;
-  background-color: #EEE;
-  left: .1em;
-}
-.heroes .text {
-  position: relative;
-  top: -3px;
-}
-.heroes .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #607D8B;
-  line-height: 1em;
-  position: relative;
-  height: 1.8em;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
-}
-#add-button {
-  background-color: white;
+  background-color:rgb(207, 206, 206);
 }
 
-#add-button gpu-ripple {
-  color: blue;
+.heroes .badge {
+  text-align: center;
+  font-size: small;
+  color: white;
+  padding: 0;
+  background-color: #607D8B;
+  height: 100%;
+  width: 1.8em;
+  margin: 0;
 }
 
 material-button.delete {
-  float:right;
-  margin-top: 2px;
-  margin-right: .8em;
   background-color: gray !important;
+  width: 3em;
   color:white;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+}
+
+.hero-list-grid {
+  display: grid;
+  grid-template-columns: 3em auto 20px
+}
+
+.hero-list-col-1 {
+  grid-column: 1;
+}
+
+.hero-list-col-2 {
+  grid-column: 2;
+}
+
+.hero-list-col-3 {
+  grid-column: 3;
 }
