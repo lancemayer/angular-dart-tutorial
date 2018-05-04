@@ -1,6 +1,6 @@
 <div id="search-component">
     <h4>Hero Search</h4>
-    <input #searchBox id="search-box" (change)="search(searchBox.value)" (keyup)="search(searchBox.value)" />
+    <material-input [(ngModel)]="searchTerm" id="search-box" (change)="search()" (keyup)="search()"></material-input>
     <div>
         <div *ngFor="let hero of heroes | async" (click)="gotoDetail(hero)" class="search-result">
             {{hero.name}}

@@ -11,7 +11,7 @@ import 'src/routes.dart';
   <h1>{{title}}</h1>
   <nav>
     <a [routerLink]="routes.dashboard.toUrl()"
-      routeLinkActive="active">Dashboard</a>
+      routerLinkActive="active">Dashboard</a>
     <a [routerLink]="routes.heroes.toUrl()"
       routerLinkActive="active">Heroes</a>
   </nav>
