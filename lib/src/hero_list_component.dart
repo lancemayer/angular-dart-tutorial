@@ -50,6 +50,13 @@ class HeroListComponent implements OnInit {
     addHeroName = '';
   }
 
+  Future<void> delete(Hero hero) async {
+    await _heroService.delete(hero.id);
+    heroes.remove(hero);
+    if (selected ==  hero)
+      selected = null;
+  }
+
   String _heroUrl(int id) =>
       paths.hero.toUrl(parameters: {paths.idParam: id.toString()});
 
