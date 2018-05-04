@@ -5,13 +5,18 @@ import 'dart:async';
 
 import 'hero.dart';
 import 'hero_service.dart';
+import 'hero_search_component.dart';
 import 'route_paths.dart' as paths;
 
 @Component(
   selector: 'my-dashboard',
   templateUrl: 'dashboard_component.html',
   styleUrls: ['dashboard_component.css'],
-  directives: [coreDirectives, routerDirectives],
+  directives: [
+    coreDirectives,
+    HeroSearchComponent,
+    routerDirectives,
+  ],
 )
 class DashboardComponent implements OnInit {
   List<Hero> heroes;
@@ -25,5 +30,5 @@ class DashboardComponent implements OnInit {
   }
 
   String heroUrl(int id) =>
-    paths.hero.toUrl(parameters: {paths.idParam: id.toString()});
+      paths.hero.toUrl(parameters: {paths.idParam: id.toString()});
 }

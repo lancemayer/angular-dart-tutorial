@@ -9,7 +9,9 @@
     <material-list-item class="hero-list-grid" *ngFor="let hero of heroes" (trigger)="onSelect(hero)" [class.selected]="hero === selected">
         <span class="badge hero-list-col-1">{{hero.id}}</span>
         <span class="hero-list-col-2">{{hero.name}}</span>
-        <material-button class="delete hero-list-col-3" (trigger)="delete(hero); $event.stopPropogation()">x</material-button>
+        <material-button class="delete hero-list-col-3" (trigger)="delete(hero); $event.stopPropogation()">
+            <material-icon icon="delete_forever"></material-icon>
+        </material-button>
     </material-list-item>
 </material-list>
 <div *ngIf="selected != null">

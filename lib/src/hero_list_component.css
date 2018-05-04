@@ -9,7 +9,7 @@
 .heroes material-list-item {
   cursor: pointer;
   background-color: #EEE;
-  margin: 0;
+  margin-bottom: .3em;
   padding: 0;
 }
 .heroes material-list-item.selected:hover {
@@ -33,7 +33,7 @@
 
 material-button.delete {
   background-color: gray !important;
-  width: 3em;
+  width: 2em;
   color:white;
   padding: 0;
   margin: 0;
@@ -42,7 +42,7 @@ material-button.delete {
 
 .hero-list-grid {
   display: grid;
-  grid-template-columns: 3em auto 20px
+  grid-template-columns: 3em auto 2em
 }
 
 .hero-list-col-1 {
