@@ -4,7 +4,7 @@
 }
 .heroes {
   margin: 0;
-  width: 15em;
+  width: 25em;
 }
 .heroes material-list-item {
   cursor: pointer;
@@ -20,39 +20,43 @@
   background-color:rgb(207, 206, 206);
 }
 
-.heroes .badge {
+.hero-list-grid {
+  display: grid;
+  grid-template-columns: 3em auto min-content min-content;
+}
+
+.hero-list-badge {
+  grid-column: 1;
+  display: inline-block;
+  vertical-align: middle;
   text-align: center;
-  font-size: small;
   color: white;
   padding: 0;
   background-color: #607D8B;
   height: 100%;
-  width: 1.8em;
+  width: 3em;
   margin: 0;
 }
 
-material-button.delete {
-  background-color: gray !important;
-  width: 2em;
+.hero-list-name {
+  grid-column: 2;
+  padding-left: 1em;
+}
+
+material-button.hero-list-edit {
+  grid-column: 3;
+  background-color: rgb(71, 209, 16) !important;
   color:white;
   padding: 0;
   margin: 0;
   border-radius: 0;
 }
 
-.hero-list-grid {
-  display: grid;
-  grid-template-columns: 3em auto 2em
-}
-
-.hero-list-col-1 {
-  grid-column: 1;
-}
-
-.hero-list-col-2 {
-  grid-column: 2;
-}
-
-.hero-list-col-3 {
-  grid-column: 3;
+material-button.hero-list-delete {
+  grid-column: 4;
+  background-color: rgb(158, 7, 7) !important;
+  color:white;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
 }
