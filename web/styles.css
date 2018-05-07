@@ -13,16 +13,16 @@ h2, h3 {
   font-weight: lighter;
 }
 body {
-  margin: 2em;
+  margin: 0;
 }
 body, input[text], button {
   color: #888;
   font-family: Cambria, Georgia;
 }
-a {
+/* a {
   cursor: pointer;
   cursor: hand;
-}
+} */
 button {
   font-family: Arial;
   background-color: #eee;
@@ -44,7 +44,7 @@ label {
   padding-right: 0.5em;
 }
 /* Navigation link styles */
-nav a {
+/* nav a {
   padding: 5px 10px;
   text-decoration: none;
   margin-right: 10px;
@@ -62,7 +62,7 @@ nav a:hover {
 }
 nav a.active {
   color: #039be5;
-}
+} */
 
 /* items class */
 .items {

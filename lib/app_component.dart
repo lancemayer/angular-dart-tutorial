@@ -8,16 +8,33 @@ import 'src/routes.dart';
 @Component(
   selector: 'my-app',
   template: '''
-  <h1>{{title}}</h1>
-  <nav>
-    <a [routerLink]="routes.dashboard.toUrl()"
-      routerLinkActive="active">Dashboard</a>
-    <a [routerLink]="routes.heroes.toUrl()"
-      routerLinkActive="active">Heroes</a>
-  </nav>
+    <header class="material-header">
+      <div class="material-header-row">
+        <!--<material-button icon
+            class="material-drawer-button" (trigger)="drawer.toggle()">
+          <material-icon icon="menu"></material-icon>
+        </material-button>-->
+        <span class="material-header-title">{{title}}</span>
+        <div class="material-spacer"></div>
+        <nav class="material-navigation">
+          <a [routerLink]="routes.dashboard.toUrl()" routerLinkActive="active">Dashboard</a>
+        </nav>
+        <nav class="material-navigation">
+          <a [routerLink]="routes.heroes.toUrl()" routerLinkActive="active">Heroes</a>
+        </nav>
+        <nav class="material-navigation">
+          <a href="">Link 3</a>
+        </nav>
+      </div>
+    </header>
+    <div class="my-body">
     <router-outlet [routes]="routes.all"></router-outlet>
+    </div>
   ''',
-  styleUrls: ['app_component.css'],
+  styleUrls: [
+    'package:angular_components/app_layout/layout.scss.css',
+    'app_component.css',
+  ],
   directives: [
     routerDirectives,
     materialDirectives,
