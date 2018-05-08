@@ -22,9 +22,6 @@ import 'src/routes.dart';
         <nav class="material-navigation">
           <a [routerLink]="routes.heroes.toUrl()" routerLinkActive="active">Heroes</a>
         </nav>
-        <nav class="material-navigation">
-          <a href="">Link 3</a>
-        </nav>
       </div>
     </header>
     <div class="my-body">
