@@ -3,6 +3,7 @@ import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:angular_components/angular_components.dart';
 
+import 'hero_component.dart';
 import 'dart:async';
 import 'hero.dart';
 import 'hero_service.dart';
@@ -13,6 +14,8 @@ import 'route_paths.dart' as paths;
   templateUrl: 'hero_list_component.html',
   styleUrls: ['hero_list_component.css'],
   directives: [
+    HeroComponent,
+    AutoDismissDirective,
     materialDirectives,
     materialInputDirectives,
     coreDirectives,
@@ -25,6 +28,7 @@ import 'route_paths.dart' as paths;
   pipes: [commonPipes],
 )
 class HeroListComponent implements OnInit {
+  bool showHeroDialog = false;
   final HeroService _heroService;
   final Router _router;
   final title = 'Tour de Heroes';
@@ -40,6 +44,11 @@ class HeroListComponent implements OnInit {
 
   Future<void> _getHeroes() async {
     heroes = await _heroService.getAll();
+  }
+
+  void showHeroEditDialog(Hero hero){
+    showHeroDialog = true;
+    selected = hero;
   }
 
   Future<void> add() async {
@@ -62,4 +71,7 @@ class HeroListComponent implements OnInit {
 
   Future<NavigationResult> gotoDetail() =>
       _router.navigate(_heroUrl(selected.id));
+
+  Future<NavigationResult> gotoHeroDetail(Hero hero) =>
+      _router.navigate(_heroUrl(hero.id));
 }

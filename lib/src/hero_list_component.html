@@ -5,11 +5,35 @@
         <material-icon icon="add"></material-icon>
     </material-fab>
 </div>
+
+<modal [visible]="showHeroDialog">
+  <material-dialog
+    class="basic-dialog"
+    [autoDismissable]="showHeroDialog"
+    (dismiss)="showHeroDialog = false">
+
+    <h1 header>Selected Hero</h1>
+
+    <div *ngIf="selected != null">
+        <h2>
+            {{selected.name | uppercase}} is my hero
+        </h2>
+        <material-button raised (trigger)="gotoDetail()">View Details</material-button>
+    </div>
+    <div footer>
+      <material-button raised   (trigger)="showHeroDialog = false">
+        Close
+      </material-button>
+    </div>
+
+  </material-dialog>
+</modal>
+
 <material-list class="heroes">
-    <material-list-item class="hero-list-grid" *ngFor="let hero of heroes" (trigger)="onSelect(hero)" [class.selected]="hero === selected">
-        <span class="hero-list-badge">{{hero.id}}</span>
+        <material-list-item class="hero-list-grid" *ngFor="let hero of heroes" (trigger)="showHeroEditDialog(hero)" [class.selected]="hero === selected">
+            <span class="hero-list-badge">{{hero.id}}</span>
         <span class="hero-list-name">{{hero.name}}</span>
-        <material-button class="hero-list-edit" (trigger)="delete(hero); $event.stopPropogation()">
+        <material-button class="hero-list-edit" (trigger)="gotoHeroDetail(hero); $event.stopPropogation()">
             <material-icon icon="edit"></material-icon>
         </material-button>
         <material-button class="hero-list-delete" (trigger)="delete(hero); $event.stopPropogation()">
@@ -17,9 +41,3 @@
         </material-button>
     </material-list-item>
 </material-list>
-<div *ngIf="selected != null">
-    <h2>
-        {{selected.name | uppercase}} is my hero
-    </h2>
-    <material-button raised (trigger)="gotoDetail()">View Details</material-button>
-</div>
